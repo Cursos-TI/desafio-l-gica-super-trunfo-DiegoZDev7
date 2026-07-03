@@ -1,11 +1,11 @@
-//desafio nivel novato
+//desafio nivel mestre
 
 #include <stdio.h>
 
     int main(){
         char estado, estado2;
         char codigo[20], codigo2[20];
-        char nomecdd[30], nomecdd2[30];
+        char nomeEst[30], nomeEst2[30];
         int populacao, populacao2;
         float area, area2;
         float pib, pib2;
@@ -13,6 +13,7 @@
         float densidade, densidade2;
         float pibper1, pibper2;
         float superpoder, superpoder2;
+        char comparacao;
 
         //primeira carta
         printf("Digite a primeira letra do estado da primeira carta:");
@@ -21,8 +22,8 @@
         printf("Digite o codigo da primeira carta:");
         scanf("%s", &codigo);
 
-        printf("Digite o nome da cidade da primeira carta:");
-        scanf("%s", &nomecdd);
+        printf("Digite o nome do estado da primeira carta:");
+        scanf("%s", &nomeEst);
 
         printf("Digite a população da primeira carta:");
         scanf("%d", &populacao);
@@ -43,8 +44,8 @@
         printf("Digite o codigo da segunda carta:");
         scanf("%s", &codigo2);
 
-        printf("Digite o nome da cidade da segunda carta:");
-        scanf("%s", &nomecdd2);
+        printf("Digite o nome do estado da segunda carta:");
+        scanf("%s", &nomeEst2);
 
         printf("Digite a população da segunda carta:");
         scanf("%d", &populacao2);
@@ -74,7 +75,7 @@
 
         printf("A primeira letra do estado da primeira carta é: %c\n", estado);
         printf("O codigo da  primeira carta é: %s\n", codigo);
-        printf("O nome da cidade da primeira carta é: %s\n", nomecdd);
+        printf("O nome do estado da primeira carta é: %s\n", nomeEst);
         printf("A população da primeira carta é: %d\n", populacao);
         printf("A area da primeira carta é: %f\n", area);
         printf("O pib da primeira carta é:%f\n", pib);
@@ -87,7 +88,7 @@
 
         printf("A primeira letra do estado da segunda carta é: %c\n", estado2);
         printf("O codigo da segunda carta é: %s\n", codigo2);
-        printf("O nome da cidade da segunda carta é: %s\n", nomecdd2);
+        printf("O nome do estado da segunda carta é: %s\n", nomeEst2);
         printf("A população da segunda carta é: %d\n", populacao2);
         printf("A area da segunda carta é: %f\n", area2);
         printf("O pib da segunda carta é:%f\n", pib2);
@@ -97,47 +98,59 @@
         printf("O super poder da segunda carta é: %f\n", superpoder2);
 
         printf("\n===== COMPARACAO DAS CARTAS =====\n");
-
-        if(populacao > populacao2){
-            printf("Populaçao: carta 1 venceu\n");
-        }else{
-            printf("Populacao: carta 2 venceu\n");
-        }
-
-        if(area > area2){
-            printf("Area: Carta 1 venceu\n");
-        } else{
-            printf("Area: Carta 2 venceu\n");
-        }
-
-        if(pib > pib2){
-            printf("Pib: Carta 1 venceu\n");
-        } else{
-            printf("Pib: Carta 2 venceu\n");
-        }
-
-        if(pontos > pontos2){
-        printf("Pontos turisticos: Carta 1 venceu\n");
-        } else{
-        printf("Ponto turisticos: Carta 2 venceu\n");
-        }
-
-        if(densidade < densidade2){
-        printf("Densidade: Carta 1 venceu\n");
-        } else{
-        printf("Densidade: Carta 2 venceu\n");
-        }
-
-        if(pibper1 > pibper2){
-        printf("Pib per capital: Carta 1 venceu\n");
-        } else{
-        printf("Pib per capital: Carta 2 venceu\n");
-        }
-
-        if(superpoder > superpoder2){
-        printf("Super poder: Carta 1 venceu\n");
-        } else{
-        printf("Super poder: Carta 2 venceu\n");
+        
+        printf("Escreva a letra do atributo que deseja comparar\n p = populacao \n a = Area \n b = Pib \n n = Numero de pontos turisticos \n d = Densidade demografica \n");
+        scanf(" %c", &comparacao);
+        
+        switch (comparacao){
+        case 'p':
+            if(populacao > populacao2){
+                printf("Populaçao do(a) %s e %d: carta 1 venceu\n", nomeEst, populacao);
+            }else if (populacao < populacao2){
+                printf("Populacao do(a) %s e %d: carta 2 venceu\n", nomeEst2, populacao2);
+            } else{
+                printf("Empate!");
+            }
+        break;
+        case 'a':
+             if(area > area2){
+                printf("Area do(a) %s e %.2f: Carta 1 venceu\n", nomeEst, area);
+            } else if(area < area2){
+                printf("Area do(a) %s e %.2f: Carta 2 venceu\n", nomeEst2, area2);
+            } else{
+                printf("Empate!");
+            }
+        break;
+        case 'b':
+            if(pib > pib2){
+                printf("Pib do(a) %s e %.2f: Carta 1 venceu\n", nomeEst, pib);
+            } else if(pib < pib2){
+                printf("Pib do(a) %s e %.2f: Carta 2 venceu\n", nomeEst2, pib2);
+            } else{
+                printf("Empate!");
+            }
+        break;
+        case 'n':
+            if(pontos > pontos2){
+                printf("Pontos turisticos do(A) %s e %d: Carta 1 venceu\n", nomeEst, pontos);
+            } else if(pontos < pontos2){
+                printf("Ponto turisticos do(A) %s e %d: Carta 2 venceu\n", nomeEst2, pontos2);
+            } else{
+                printf("Empate!");
+            }
+        break;
+        case 'd':
+            if(densidade < densidade2){
+            printf("Densidade do(a) %s e %.2f: Carta 1 venceu\n", nomeEst, densidade);
+            } else if(densidade > densidade2){
+            printf("Densidade do(a) %s e %.2f: Carta 2 venceu\n", nomeEst2, densidade2);
+            } else{
+                printf("Empate!");
+            }
+        break;
+        default:
+            printf("opcao invalida");
+        break;
         }
     return 0;
     }
